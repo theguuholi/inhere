@@ -1,23 +1,28 @@
 import { Alert, FlatList, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { styles } from './styles';
 import Participant from '../../components/Participant';
+import { useState } from 'react';
 
 export default function Home() {
-    const participants = [
-        "Rodrigo",
-        "Gustavo",
-        "Lucas",
-        "Fernanda",
-        "Ana",
-        "Maria",
-        "João",
-        "Pedro",
-        "Paulo",
-    ]
-    function handleParicipantAdd(): void {
+    // const participants = [
+    //     "Rodrigo",
+    //     "Gustavo",
+    //     "Lucas",
+    //     "Fernanda",
+    //     "Ana",
+    //     "Maria",
+    //     "João",
+    //     "Pedro",
+    //     "Paulo",
+    // ]
+    const [participants, setParticipants] = useState<string[]>([]);
+    const handleParicipantAdd =(): void => {
         if(participants.includes("Rodrigo")) {
             return Alert.alert("Rodrigo is already a participant");
         }
+        setParticipants([...participants, "Ana"]);
+        // participants.push("aasdf");
+        // console.log(participants);
     }
 
     const handleParticipantRemove = (name: string): void => {
