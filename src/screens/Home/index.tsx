@@ -3,8 +3,23 @@ import { styles } from './styles';
 import Participant from '../../components/Participant';
 
 export default function Home() {
+    const participants = [
+        "Rodrigo",
+        "Gustavo",
+        "Lucas",
+        "Fernanda",
+        "Ana",
+        "Maria",
+        "João",
+        "Pedro",
+        "Paulo",
+    ]
     function handleParicipantAdd(): void {
         console.log("Add participant");
+    }
+
+    const handleParticipantRemove = (name: string): void => {
+        console.log(`Remove participant: ${name}`);
     }
 
     return (
@@ -18,9 +33,11 @@ export default function Home() {
                 </TouchableOpacity>
             </View>
 
-            <Participant />
-            <Participant />
-            <Participant />
+            {/* <Participant name="Rodrigo" onRemove={handleParticipantRemove} /> quando nao quer passar parametro*/}
+            {/* <Participant name="Gustavo" onRemove={() => handleParticipantRemove("Gustavo")} /> */}
+            {participants.map(name => (
+                <Participant key={name} name={name} onRemove={() => handleParticipantRemove(name)} />
+            ))}
         </View>
     );
 }
