@@ -1,4 +1,4 @@
-import { Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { styles } from './styles';
 import Participant from '../../components/Participant';
 
@@ -35,9 +35,12 @@ export default function Home() {
 
             {/* <Participant name="Rodrigo" onRemove={handleParticipantRemove} /> quando nao quer passar parametro*/}
             {/* <Participant name="Gustavo" onRemove={() => handleParticipantRemove("Gustavo")} /> */}
-            {participants.map(name => (
-                <Participant key={name} name={name} onRemove={() => handleParticipantRemove(name)} />
-            ))}
+            <ScrollView showsVerticalScrollIndicator={false}>
+                {participants.map(name => (
+                    <Participant key={name} name={name} onRemove={() => handleParticipantRemove(name)} />
+                ))}
+            </ScrollView>
+
         </View>
     );
 }
