@@ -43,6 +43,11 @@ export default function Home() {
         ]);
     }
 
+    // const handleStates = (value: string): void => {
+    //     setNewParticipant(value);
+    //     console.log(newParticipant);
+    // }
+
     return (
         <View style={styles.container}>
             <Text style={styles.eventName}>Event Name</Text>
@@ -53,7 +58,9 @@ export default function Home() {
                     placeholder="Participant Name"
                     placeholderTextColor="#6b6b6b"
                     value={newParticipant}
-                    onChangeText={e => setNewParticipant(e)} />
+                    // onChangeText={handleStates} 
+                    onChangeText={e => setNewParticipant(e)} 
+                    />
                 <TouchableOpacity style={styles.button} onPress={handleParicipantAdd}>
                     <Text style={styles.buttonText}>+</Text>
                 </TouchableOpacity>
