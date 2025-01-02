@@ -22,6 +22,7 @@ export default function Home() {
         if (participants.includes(newParticipant)) {
             return Alert.alert("Participant already added", "This participant is already added to the event.");
         }
+        // participants = [...participants, newParticipant];
         setParticipants([...participants, newParticipant]);
         setNewParticipant("");
         // participants.push("aasdf");
