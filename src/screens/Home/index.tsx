@@ -37,8 +37,7 @@ export default function Home() {
                 text: "Remove",
                 onPress: () => {
                     Alert.alert("Participant removed");
-                    // const newParticipants = participants.filter(participant => participant !== name);
-                    // setParticipants(newParticipants);
+                    setParticipants(prevState => prevState.filter(participant => participant !== name));
                 }
             }
         ]);
