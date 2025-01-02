@@ -16,11 +16,14 @@ export default function Home() {
     //     "Paulo",
     // ]
     const [participants, setParticipants] = useState<string[]>([]);
-    const handleParicipantAdd =(): void => {
-        if(participants.includes("Rodrigo")) {
-            return Alert.alert("Rodrigo is already a participant");
+    const [newParticipant, setNewParticipant] = useState<string>("");
+
+    const handleParicipantAdd = (): void => {
+        if (participants.includes(newParticipant)) {
+            return Alert.alert("Participant already added", "This participant is already added to the event.");
         }
-        setParticipants([...participants, "Ana"]);
+        setParticipants([...participants, newParticipant]);
+        setNewParticipant("");
         // participants.push("aasdf");
         // console.log(participants);
     }
@@ -46,7 +49,12 @@ export default function Home() {
             <Text style={styles.eventName}>Event Name</Text>
             <Text style={styles.eventDate}>Friday, 18 December 2024.</Text>
             <View style={styles.form}>
-                <TextInput style={styles.input} placeholder="Participant Name" placeholderTextColor="#6b6b6b" />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Participant Name"
+                    placeholderTextColor="#6b6b6b"
+                    value={newParticipant}
+                    onChangeText={e => setNewParticipant(e)} />
                 <TouchableOpacity style={styles.button} onPress={handleParicipantAdd}>
                     <Text style={styles.buttonText}>+</Text>
                 </TouchableOpacity>
@@ -56,7 +64,7 @@ export default function Home() {
             {/* <Participant name="Gustavo" onRemove={() => handleParticipantRemove("Gustavo")} /> */}
 
             <FlatList
-                ListEmptyComponent={<Text style={{color: "#fff"}}>No participants</Text>}
+                ListEmptyComponent={<Text style={{ color: "#fff" }}>No participants</Text>}
                 showsVerticalScrollIndicator={false}
                 data={participants}
                 keyExtractor={item => item}
